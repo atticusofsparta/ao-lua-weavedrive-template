@@ -9,6 +9,7 @@
     "aos:publish": "cross-env NODE_OPTIONS=\"--import=./register.js \" node tools/bundle-aos.ts && node tools/publish-aos.ts",
     "aos:load": "cross-env NODE_OPTIONS=\"--import=./register.js \" node tools/bundle-aos.ts && node tools/load-aos.ts",
     "aos:spawn": "cross-env NODE_OPTIONS=\"--import=./register.js \" node tools/spawn-aos.ts",
+    "assign": "cross-env NODE_OPTIONS=\"--import=./register.js \" node tools/assign-tx.ts",
     "test": "cross-env NODE_OPTIONS=\"--import=./register.js \" node --test-concurrency 1 --experimental-wasm-memory64 **/*.test.ts"
   },
   "devDependencies": {

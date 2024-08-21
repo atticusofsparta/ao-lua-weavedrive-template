@@ -2,6 +2,27 @@ import fs from 'fs';
 import path from 'path';
 import { createDataItemSigner, connect } from '@permaweb/aoconnect';
 import { fileURLToPath } from 'url';
+/**
+ * Example of how to spawn from terminal:
+ * 
+ aos \
+ --wallet=key.json \
+ --tag-name=Extension --tag-value=WeaveDrive \
+ --tag-name=Variant --tag-value=weavedrive.1 \
+ --tag-name=Availability-Type --tag-value=Assigned \
+ --tag-name=Attestor --tag-value=7waR8v4STuwPnTck1zFVkQqJh5K9q9Zik4Y5-5dV7nk \
+ weavedrive-enabled2
+ */
+
+/**
+Send a read file message:
+   Send({Target = ao.id, Action = "Get-Tx", ["Tx-Id"] = "ur71-RBt64V6tuClAY7ubkkE5Zb25odpkbNO92N-9Ms"})
+  */
+
+/**
+Attest a txid:
+   refer to assign-tx.ts for example
+  */
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -24,6 +45,15 @@ async function main() {
     module: moduleId,
     scheduler,
     signer,
+    tags: [
+      { name: 'Extension', value: 'WeaveDrive' },
+      { name: 'Variant', value: 'weavedrive.1' },
+      { name: 'Availability-Type', value: 'Assigned' },
+      {
+        name: 'Attestor',
+        value: '7waR8v4STuwPnTck1zFVkQqJh5K9q9Zik4Y5-5dV7nk',
+      },
+    ],
   });
 
   console.log('Process ID:', processId);
